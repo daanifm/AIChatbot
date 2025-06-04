@@ -1,4 +1,4 @@
-3# 🤖 Chatbot QA Inteligente con Contexto y Gradio
+# 🤖 Chatbot QA Inteligente con Contexto y Gradio
 
 ¡Bienvenido a mi proyecto de **Chatbot QA Inteligente**! 🎯  
 Este sistema combina lo último en modelos de lenguaje, recuperación de información y una interfaz amigable con **manejo de contexto**.
