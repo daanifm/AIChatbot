@@ -13,7 +13,7 @@ Functions:
 - `build_prompt`: Constructs the complete prompt for the chat model based on the 
   user's question and prior interaction history.
 """
-def build_prompt(question: str, interaction: str):
+def build_prompt(question: str, interaction):
     """
     Constructs the complete prompt to send to the chat-based model,
     including a system message for behavior instructions
@@ -21,7 +21,9 @@ def build_prompt(question: str, interaction: str):
 
     Parameters:
     question (str): The question that the user asks.
-    interaction (str): The prior interaction, if any.
+    interaction (list | str): The prior interaction history. This can be
+        provided as a list of ``(question, answer)`` tuples or as a raw
+        string.
 
     Returns:
     list: The list of message dictionaries to be passed to the chat model.
@@ -31,8 +33,15 @@ Eres un experto en el tema que se te consulte. Tu objetivo es proporcionar respu
 Cuando se te dé una pregunta y un historial de interacción, responde teniendo en cuenta ese contexto para mantener coherencia y continuidad. 
 """
 
+    if isinstance(interaction, list):
+        interaction_text = "\n".join(
+            f"Usuario: {q}\nAsistente: {a}" for q, a in interaction
+        )
+    else:
+        interaction_text = str(interaction)
+
     user_message = f"""Interacción previa:
-{interaction}
+{interaction_text}
 
 Pregunta:
 {question}

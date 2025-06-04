@@ -12,7 +12,6 @@ Functions:
     the OpenAI model based on the user's query and prior interactions.
 
 """
-from openai import OpenAI
 from prompt import build_prompt
 
 def create_completions(client, query, interaction):
